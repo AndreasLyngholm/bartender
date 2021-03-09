@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 
 FLOW_RATE = 60.0/100.0
 
-class Bartender(MenuDelegate): 
+class Bartender(): 
 	def __init__(self):
 		self.running = False
 
@@ -31,44 +31,6 @@ class Bartender(MenuDelegate):
 		with open("pump_config.json", "w") as jsonFile:
 			json.dump(configuration, jsonFile)
 
-	def buildMenu(self, drink_list, drink_options):
-		# create a new main menu
-		m = Menu("Main Menu")
-
-		# add drink options
-		drink_opts = []
-		for d in drink_list:
-			drink_opts.append(MenuItem('drink', d["name"], {"ingredients": d["ingredients"]}))
-
-		configuration_menu = Menu("Configure")
-
-		# add pump configuration options
-		pump_opts = []
-		for p in sorted(self.pump_configuration.keys()):
-			config = Menu(self.pump_configuration[p]["name"])
-			# add fluid options for each pump
-			for opt in drink_options:
-				# star the selected option
-				selected = "*" if opt["value"] == self.pump_configuration[p]["value"] else ""
-				config.addOption(MenuItem('pump_selection', opt["name"], {"key": p, "value": opt["value"], "name": opt["name"]}))
-			# add a back button so the user can return without modifying
-			config.addOption(Back("Back"))
-			config.setParent(configuration_menu)
-			pump_opts.append(config)
-
-		# add pump menus to the configuration menu
-		configuration_menu.addOptions(pump_opts)
-		# add a back button to the configuration menu
-		configuration_menu.addOption(Back("Back"))
-		# adds an option that cleans all pumps to the configuration menu
-		configuration_menu.addOption(MenuItem('clean', 'Clean'))
-		configuration_menu.setParent(m)
-
-		m.addOptions(drink_opts)
-		m.addOption(configuration_menu)
-		# create a menu context
-		self.menuContext = MenuContext(m, self)
-
 	def filterDrinks(self, menu):
 		"""
 		Removes any drinks that can't be handled by the pump configuration
@@ -86,34 +48,6 @@ class Bartender(MenuDelegate):
 					i.visible = True
 			elif (i.type == "menu"):
 				self.filterDrinks(i)
-
-	def selectConfigurations(self, menu):
-		"""
-		Adds a selection star to the pump configuration option
-		"""
-		for i in menu.options:
-			if (i.type == "pump_selection"):
-				key = i.attributes["key"]
-				if (self.pump_configuration[key]["value"] == i.attributes["value"]):
-					i.name = "%s %s" % (i.attributes["name"], "*")
-				else:
-					i.name = i.attributes["name"]
-			elif (i.type == "menu"):
-				self.selectConfigurations(i)
-
-	def prepareForRender(self, menu):
-		self.filterDrinks(menu)
-		self.selectConfigurations(menu)
-		return True
-
-	def menuItemClicked(self, menuItem):
-		if (menuItem.type == "drink"):
-			self.makeDrink(menuItem.name, menuItem.attributes["ingredients"])
-			return True
-		elif(menuItem.type == "clean"):
-			self.clean()
-			return True
-		return False
 
 	def clean(self):
 		waitTime = 20
@@ -148,8 +82,9 @@ class Bartender(MenuDelegate):
 		# self.startInterrupts()
 		self.running = False
 
-	def displayMenuItem(self, menuItem):
-		print menuItem.name
+	def showDrinks(self, ):
+		for drink in drink_list:
+			print drink['name']
 
 	def pour(self, pin, waitTime):
 		GPIO.output(pin, GPIO.LOW)
@@ -164,44 +99,50 @@ class Bartender(MenuDelegate):
 			self.led.display()
 			time.sleep(interval)
 
-	def makeDrink(self, drink, ingredients):
+	def makeDrink(self, drink):
 		# cancel any button presses while the drink is being made
 		# self.stopInterrupts()
 		self.running = True
 
-		# launch a thread to control lighting
-		lightsThread = threading.Thread(target=self.cycleLights)
-		lightsThread.start()
+		ingredients = ""
+		for d in drink_list:
+			if drink == d['name']:
+				ingredients = d['ingredients']
+		
+		if ingredients != '':
 
-		# Parse the drink ingredients and spawn threads for pumps
-		maxTime = 0
-		pumpThreads = []
-		for ing in ingredients.keys():
-			for pump in self.pump_configuration.keys():
-				if ing == self.pump_configuration[pump]["value"]:
-					waitTime = ingredients[ing] * FLOW_RATE
-					if (waitTime > maxTime):
-						maxTime = waitTime
-					pump_t = threading.Thread(target=self.pour, args=(self.pump_configuration[pump]["pin"], waitTime))
-					pumpThreads.append(pump_t)
 
-		# start the pump threads
-		for thread in pumpThreads:
-			thread.start()
+			# Parse the drink ingredients and spawn threads for pumps
+			maxTime = 0
+			pumpThreads = []
+			for ing in ingredients.keys():
+				for pump in self.pump_configuration.keys():
+					if ing == self.pump_configuration[pump]["value"]:
+						waitTime = ingredients[ing] * FLOW_RATE
+						if (waitTime > maxTime):
+							maxTime = waitTime
+						pump_t = threading.Thread(target=self.pour, args=(self.pump_configuration[pump]["pin"], waitTime))
+						pumpThreads.append(pump_t)
 
-		# start the progress bar
-		self.progressBar(maxTime)
+			# start the pump threads
+			for thread in pumpThreads:
+				thread.start()
 
-		# wait for threads to finish
-		for thread in pumpThreads:
-			thread.join()
+			# start the progress bar
+			self.progressBar(maxTime)
 
-		# sleep for a couple seconds to make sure the interrupts don't get triggered
-		time.sleep(2);
+			# wait for threads to finish
+			for thread in pumpThreads:
+				thread.join()
 
-		# reenable interrupts
-		# self.startInterrupts()
-		self.running = False
+			# sleep for a couple seconds to make sure the interrupts don't get triggered
+			time.sleep(2);
+
+			# reenable interrupts
+			# self.startInterrupts()
+			self.running = False
+		else:
+			print "The drink does not exist"
 
 	def updateProgressBar(self, percent):
 		print percent
