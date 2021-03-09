@@ -1,6 +1,6 @@
 import time
 import sys
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 import json
 import threading
 import traceback
@@ -20,7 +20,7 @@ class Bartender():
 		for pump in self.pump_configuration.keys():
 			GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 
-		print("Done initializing")
+		print("Done initializing\n\n")
 
 	@staticmethod
 	def readPumpConfiguration():
@@ -108,10 +108,10 @@ class Bartender():
 		for d in drink_list:
 			if drink == d['name']:
 				ingredients = d['ingredients']
+
+		print(ingredients)
 		
 		if ingredients != '':
-
-
 			# Parse the drink ingredients and spawn threads for pumps
 			maxTime = 0
 			pumpThreads = []
@@ -148,12 +148,13 @@ class Bartender():
 		print(percent)
 
 	def run(self):
-		self.startInterrupts()
 		# main loop
 		try:  
 			while True:
-				time.sleep(0.1)
-		  
+				self.showDrinks()
+				drink = raw_input("\n\nSelect a drink.\n")
+		  		self.makeDrink(drink)
+
 		except KeyboardInterrupt:  
 			GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
 		GPIO.cleanup()           # clean up GPIO on normal exit 
@@ -161,5 +162,4 @@ class Bartender():
 		traceback.print_exc()
 
 bartender = Bartender()
-bartender.buildMenu(drink_list, drink_options)
 bartender.run()
