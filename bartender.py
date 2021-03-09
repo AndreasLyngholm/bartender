@@ -153,7 +153,7 @@ class Bartender():
 			while True:
 				self.showDrinks()
 				drink = raw_input("\n\nSelect a drink.\n")
-		  		self.makeDrink(drink)
+				self.makeDrink(drink)
 
 		except KeyboardInterrupt:  
 			GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
