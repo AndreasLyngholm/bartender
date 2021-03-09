@@ -20,7 +20,7 @@ class Bartender():
 		for pump in self.pump_configuration.keys():
 			GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 
-		print "Done initializing"
+		print("Done initializing")
 
 	@staticmethod
 	def readPumpConfiguration():
@@ -84,7 +84,7 @@ class Bartender():
 
 	def showDrinks(self, ):
 		for drink in drink_list:
-			print drink['name']
+			print(drink['name'])
 
 	def pour(self, pin, waitTime):
 		GPIO.output(pin, GPIO.LOW)
@@ -142,10 +142,10 @@ class Bartender():
 			# self.startInterrupts()
 			self.running = False
 		else:
-			print "The drink does not exist"
+			print("The drink does not exist")
 
 	def updateProgressBar(self, percent):
-		print percent
+		print(percent)
 
 	def run(self):
 		self.startInterrupts()
