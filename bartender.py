@@ -67,7 +67,7 @@ def drinks():
 @app.route('/make')
 def make():
 	drink = request.args.get('drink')
-	strength = request.args.get('strength')
+	strength = int(request.args.get('strength'))
 
 	ingredients = ""
 	for d in drink_list:
