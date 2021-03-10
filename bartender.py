@@ -7,7 +7,6 @@ import traceback
 
 from drinks import drink_list, drink_options
 
-GPIO.cleanup() # Only needed if the program was exited unexpectedly before.
 GPIO.setmode(GPIO.BCM)
 
 FLOW_RATE = 60.0/100.0
@@ -96,7 +95,7 @@ class Bartender():
 		interval = waitTime / 100.0
 		for x in range(1, 101):
 			if x % 10 == 0:
-				print("%d%\n", x)
+				print(x, "%\n")
 			time.sleep(interval)
 
 	def makeDrink(self, drink):
@@ -139,14 +138,13 @@ class Bartender():
 			# sleep for a couple seconds to make sure the interrupts don't get triggered
 			time.sleep(2);
 
+			print(drink, "was finished! Enjoy the drink!\n\n")
+
 			# reenable interrupts
 			# self.startInterrupts()
 			self.running = False
 		else:
 			print("The drink does not exist\n")
-
-	def updateProgressBar(self, percent):
-		print(percent)
 
 	def run(self):
 		# main loop
