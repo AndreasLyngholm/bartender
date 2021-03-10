@@ -7,6 +7,7 @@ import traceback
 
 from drinks import drink_list, drink_options
 
+GPIO.cleanup() # Only needed if the program was exited unexpectedly before.
 GPIO.setmode(GPIO.BCM)
 
 FLOW_RATE = 60.0/100.0
