@@ -88,14 +88,14 @@ drink_list = [
 ]
 
 drink_options = [
-	{"name": "Gin", "value": "gin"},
-	{"name": "Rum", "value": "rum"},
-	{"name": "Vodka", "value": "vodka"},
-	{"name": "Tequila", "value": "tequila"},
-	{"name": "Cointreau", "value": "cointreau"},
-	{"name": "Tonic Water", "value": "tonic"},
-	{"name": "Coke", "value": "coke"},
-	{"name": "Grenadine", "value": "grenadine"},
-	{"name": "Cranberry Juice", "value": "cj"},
-	{"name": "Orange Juice", "value": "oj"}
+	{"name": "Gin", "value": "gin", "type": "alcohol"},
+	{"name": "Rum", "value": "rum", "type": "alcohol"},
+	{"name": "Vodka", "value": "vodka", "type": "alcohol"},
+	{"name": "Tequila", "value": "tequila", "type": "alcohol"},
+	{"name": "Cointreau", "value": "cointreau", "type": "alcohol"},
+	{"name": "Tonic Water", "value": "tonic", "type": "mixer"},
+	{"name": "Coke", "value": "coke", "type": "mixer"},
+	{"name": "Grenadine", "value": "grenadine", "type": "mixer"},
+	{"name": "Cranberry Juice", "value": "cj", "type": "mixer"},
+	{"name": "Orange Juice", "value": "oj", "type": "mixer"}
 ]
