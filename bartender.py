@@ -9,8 +9,6 @@ from drinks import drink_list, drink_options
 
 GPIO.setmode(GPIO.BCM)
 
-FLOW_RATE = 60.0/100.0
-
 class Bartender(): 
 	def __init__(self):
 		self.running = False
@@ -115,7 +113,7 @@ class Bartender():
 			for ing in ingredients.keys():
 				for pump in self.pump_configuration.keys():
 					if ing == self.pump_configuration[pump]["value"]:
-						waitTime = ingredients[ing] * FLOW_RATE
+						waitTime = ingredients[ing] * (60.0/self.pump_configuration[pump]["speed"])
 						if (waitTime > maxTime):
 							maxTime = waitTime
 						pump_t = threading.Thread(target=self.pour, args=(self.pump_configuration[pump]["pin"], waitTime))
