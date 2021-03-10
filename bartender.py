@@ -93,7 +93,7 @@ class Bartender():
 		interval = waitTime / 100.0
 		for x in range(1, 101):
 			if x % 10 == 0:
-				print(x, "%")
+				print("{}%".format(x))
 			time.sleep(interval)
 
 	def makeDrink(self, drink):
