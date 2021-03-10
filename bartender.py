@@ -20,8 +20,6 @@ class Bartender():
 		for pump in self.pump_configuration.keys():
 			GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 
-		print("Done initializing\n\n")
-
 	@staticmethod
 	def readPumpConfiguration():
 		return json.load(open('pump_config.json'))
@@ -95,7 +93,7 @@ class Bartender():
 		interval = waitTime / 100.0
 		for x in range(1, 101):
 			if x % 10 == 0:
-				print(x, "%\n")
+				print(x, "%")
 			time.sleep(interval)
 
 	def makeDrink(self, drink):
@@ -108,7 +106,7 @@ class Bartender():
 			if drink == d['name']:
 				ingredients = d['ingredients']
 
-		print(ingredients)
+		print(ingredients, "\n")
 		
 		if ingredients != '':
 			# Parse the drink ingredients and spawn threads for pumps
@@ -127,7 +125,7 @@ class Bartender():
 			for thread in pumpThreads:
 				thread.start()
 
-			print("Making drink, please wait...\n")
+			print("Making drink, please wait...")
 			# start the progress bar
 			self.progressBar(maxTime)
 
@@ -135,10 +133,7 @@ class Bartender():
 			for thread in pumpThreads:
 				thread.join()
 
-			# sleep for a couple seconds to make sure the interrupts don't get triggered
-			time.sleep(2);
-
-			print(drink, "was finished! Enjoy the drink!\n\n")
+			print(drink, "was finished! Enjoy the drink!\n")
 
 			# reenable interrupts
 			# self.startInterrupts()
@@ -150,6 +145,7 @@ class Bartender():
 		# main loop
 		try:  
 			while True:
+				print("Select a drink for the list below\n")
 				self.showDrinks()
 				drink = input("\n\nSelect a drink.\n")
 				self.makeDrink(drink)
