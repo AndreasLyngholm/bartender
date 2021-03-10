@@ -67,7 +67,8 @@ drink_list = [
 			"vodka": 50,
 			"cj": 75,
 			"oj": 75
-		}
+		},
+		"image": "images/sex_on_the_beach.png"
 	}, {
 		"name": "Cosmopolitan",
 		"ingredients": {
