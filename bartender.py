@@ -67,7 +67,7 @@ def drinks():
 @app.route('/make')
 def make():
 	drink = request.args.get('drink')
-	strength = int(request.args.get('strength'))
+	strength = float(request.args.get('strength'))
 
 	ingredients = ""
 	for d in drink_list:
@@ -85,7 +85,7 @@ def make():
 						if option["value"] == ing:
 							choice = option
 
-					waitTime = ingredients[ing] * round(strength if choice["type"] == "alcohol" else 1) * (60.0/pump_configuration[pump]["speed"])
+					waitTime = ingredients[ing] * (strength if choice["type"] == "alcohol" else 1) * (60.0/pump_configuration[pump]["speed"])
 					if (waitTime > maxTime):
 						maxTime = waitTime
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
