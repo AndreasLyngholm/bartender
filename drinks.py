@@ -5,8 +5,7 @@ drink_list = [
 			"vodka": 10,
 			"oj": 30
 		}
-	},
-	{
+	}, {
 		"name": "Rum & Coke",
 		"ingredients": {
 			"rum": 50,
@@ -35,10 +34,10 @@ drink_list = [
 			"oj": 150
 		}
 	}, {
-		"name": "Margarita",
+		"name": "Vodka Tranebær",
 		"ingredients": {
-			"tequila": 50,
-			"mmix": 150
+			"vodka": 50,
+			"cj": 150
 		}
 	}, {
 		"name": "Gin & Juice",
@@ -50,7 +49,29 @@ drink_list = [
 		"name": "Tequila Sunrise",
 		"ingredients": {
 			"tequila": 50,
-			"oj": 150
+			"grenadine": 15,
+			"oj": 135
+		}
+	}, {
+		"name": "Tranebær Margarita",
+		"ingredients": {
+			"tequila": 30,
+			"cointreau": 30,
+			"cj": 140
+		}
+	}, {
+		"name": "Sex on the beach",
+		"ingredients": {
+			"vodka": 50,
+			"cj": 75,
+			"oj": 75
+		}
+	}, {
+		"name": "Cosmopolitan",
+		"ingredients": {
+			"cointreau": 20,
+			"vodka": 40,
+			"cj": 60
 		}
 	}
 ]
@@ -60,8 +81,10 @@ drink_options = [
 	{"name": "Rum", "value": "rum"},
 	{"name": "Vodka", "value": "vodka"},
 	{"name": "Tequila", "value": "tequila"},
+	{"name": "Cointreau", "value": "cointreau"},
 	{"name": "Tonic Water", "value": "tonic"},
 	{"name": "Coke", "value": "coke"},
-	{"name": "Orange Juice", "value": "oj"},
-	{"name": "Margarita Mix", "value": "mmix"}
+	{"name": "Grenadine", "value": "grenadine"},
+	{"name": "Cranberry Juice", "value": "cj"},
+	{"name": "Orange Juice", "value": "oj"}
 ]
