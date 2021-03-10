@@ -1,22 +1,25 @@
 import time
 import sys
-import RPi.GPIO as GPIO
 import json
 import threading
 import traceback
+# import RPi.GPIO as GPIO
+
+from flask import Flask, jsonify
+app = Flask(__name__)
 
 from drinks import drink_list, drink_options
 
-GPIO.setmode(GPIO.BCM)
+# GPIO.setmode(GPIO.BCM)
 
 class Bartender(): 
-	def __init__(self):
-		self.running = False
+	# def __init__(self):
+	# 	self.running = False
 
-		# load the pump configuration from file
-		self.pump_configuration = Bartender.readPumpConfiguration()
-		for pump in self.pump_configuration.keys():
-			GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
+	# 	# load the pump configuration from file
+	# 	self.pump_configuration = Bartender.readPumpConfiguration()
+	# 	for pump in self.pump_configuration.keys():
+	# 		GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 
 	@staticmethod
 	def readPumpConfiguration():
@@ -139,20 +142,32 @@ class Bartender():
 		else:
 			print("The drink does not exist\n")
 
-	def run(self):
-		# main loop
-		try:  
-			while True:
-				print("Select a drink for the list below\n")
-				self.showDrinks()
-				drink = input("\n\nSelect a drink.\n")
-				self.makeDrink(drink)
+	# def run(self):
+	# 	# main loop
+	# 	try:  
+	# 		while True:
+	# 			print("Select a drink for the list below\n")
+	# 			self.showDrinks()
+	# 			drink = input("\n\nSelect a drink.\n")
+	# 			self.makeDrink(drink)
 
-		except KeyboardInterrupt:  
-			GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
-		GPIO.cleanup()           # clean up GPIO on normal exit 
+	# 	except KeyboardInterrupt:  
+	# 		GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
+	# 	GPIO.cleanup()           # clean up GPIO on normal exit 
 
-		traceback.print_exc()
+	# 	traceback.print_exc()
 
-bartender = Bartender()
-bartender.run()
+
+@app.route('/')
+def hello():
+	return "Hello World!"
+
+@app.route('/drinks')
+def drinks():
+	response = jsonify(drink_list)
+	response.headers.add('Access-Control-Allow-Origin', '*')
+	return response
+
+if __name__ == '__main__':
+	bartender = Bartender()
+	app.run(host= '0.0.0.0', port=8080)
