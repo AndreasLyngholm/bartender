@@ -94,9 +94,8 @@ class Bartender():
 	def progressBar(self, waitTime):
 		interval = waitTime / 100.0
 		for x in range(1, 101):
-			self.led.clear_display()
-			self.updateProgressBar(x, y=35)
-			self.led.display()
+			if x % 10 == 0:
+				print("%d%\n", x)
 			time.sleep(interval)
 
 	def makeDrink(self, drink):
@@ -128,6 +127,7 @@ class Bartender():
 			for thread in pumpThreads:
 				thread.start()
 
+			print("Making drink, please wait...\n")
 			# start the progress bar
 			self.progressBar(maxTime)
 
@@ -142,7 +142,7 @@ class Bartender():
 			# self.startInterrupts()
 			self.running = False
 		else:
-			print("The drink does not exist")
+			print("The drink does not exist\n")
 
 	def updateProgressBar(self, percent):
 		print(percent)
