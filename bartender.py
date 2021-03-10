@@ -82,7 +82,7 @@ def make():
 			for pump in pump_configuration.keys():
 				if ing == pump_configuration[pump]["value"]:
 					for option in drink_options:
-						if option == drink:
+						if option["name"] == drink:
 							choice = option
 
 					waitTime = ingredients[ing] * (strength if choice["type"] == "alcohol" else 1) * (60.0/pump_configuration[pump]["speed"])
