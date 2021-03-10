@@ -12,7 +12,7 @@ from drinks import drink_list, drink_options
 
 GPIO.setmode(GPIO.BCM)
 
-class Bartender(): 
+class Bartender():
 	def __init__(self):
 		# load the pump configuration from file
 		self.pump_configuration = Bartender.readPumpConfiguration()
@@ -190,5 +190,4 @@ def make():
 
 if __name__ == '__main__':
 	bartender = Bartender()
-	bartender.run()
 	app.run(host= '0.0.0.0', port=8080)
