@@ -3,23 +3,16 @@ import sys
 import json
 import threading
 import traceback
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 from drinks import drink_list, drink_options
 
-# GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BCM)
 
-class Bartender(): 
-	# def __init__(self):
-	# 	self.running = False
-
-	# 	# load the pump configuration from file
-	# 	self.pump_configuration = Bartender.readPumpConfiguration()
-	# 	for pump in self.pump_configuration.keys():
-	# 		GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
+class Bartender():
 
 	@staticmethod
 	def readPumpConfiguration():
@@ -142,22 +135,6 @@ class Bartender():
 		else:
 			print("The drink does not exist\n")
 
-	# def run(self):
-	# 	# main loop
-	# 	try:  
-	# 		while True:
-	# 			print("Select a drink for the list below\n")
-	# 			self.showDrinks()
-	# 			drink = input("\n\nSelect a drink.\n")
-	# 			self.makeDrink(drink)
-
-	# 	except KeyboardInterrupt:  
-	# 		GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
-	# 	GPIO.cleanup()           # clean up GPIO on normal exit 
-
-	# 	traceback.print_exc()
-
-
 @app.route('/')
 def hello():
 	return "Hello World!"
@@ -168,6 +145,48 @@ def drinks():
 	response.headers.add('Access-Control-Allow-Origin', '*')
 	return response
 
+@app.route('/make')
+def make():
+	drink = request.args.get('drink')
+
+	ingredients = ""
+	for d in drink_list:
+		if drink == d['name']:
+			ingredients = d['ingredients']
+	
+	if ingredients != '':
+		# Parse the drink ingredients and spawn threads for pumps
+		maxTime = 0
+		pumpThreads = []
+		for ing in ingredients.keys():
+			for pump in self.pump_configuration.keys():
+				if ing == self.pump_configuration[pump]["value"]:
+					waitTime = ingredients[ing] * (60.0/self.pump_configuration[pump]["speed"])
+					if (waitTime > maxTime):
+						maxTime = waitTime
+					pump_t = threading.Thread(target=self.pour, args=(self.pump_configuration[pump]["pin"], waitTime))
+					pumpThreads.append(pump_t)
+
+		# start the pump threads
+		for thread in pumpThreads:
+			thread.start()
+
+		# print("Making drink, please wait...")
+		# start the progress bar
+		# self.progressBar(maxTime)
+
+		# wait for threads to finish
+		# for thread in pumpThreads:
+		# 	thread.join()
+		return jsonify({"success": "Din {} er færdig om {} sekunder...".format(drink, maxTime)})
+
+	else:
+		return jsonify({"error": "The drink does not exist"})
+
 if __name__ == '__main__':
 	bartender = Bartender()
+	# load the pump configuration from file
+	self.pump_configuration = Bartender.readPumpConfiguration()
+	for pump in self.pump_configuration.keys():
+		GPIO.setup(self.pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 	app.run(host= '0.0.0.0', port=8080)

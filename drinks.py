@@ -1,22 +1,18 @@
 drink_list = [
 	{
-		"name": "Test",
-		"ingredients": {
-			"vodka": 10,
-			"oj": 30
-		}
-	}, {
 		"name": "Rum & Coke",
 		"ingredients": {
 			"rum": 50,
 			"coke": 150
-		}
+		},
+		"image": "images/rom_coke.png"
 	}, {
 		"name": "Gin & Tonic",
 		"ingredients": {
 			"gin": 50,
 			"tonic": 150
-		}
+		},
+		"image": "images/gin_tonic.png"
 	}, {
 		"name": "Long Island",
 		"ingredients": {
@@ -26,39 +22,45 @@ drink_list = [
 			"tequila": 15,
 			"coke": 100,
 			"oj": 30
-		}
+		},
+		"image": "images/long_island.png"
 	}, {
 		"name": "Screwdriver",
 		"ingredients": {
 			"vodka": 50,
 			"oj": 150
-		}
+		},
+		"image": "images/screwdriver.png"
 	}, {
 		"name": "Vodka Tranebær",
 		"ingredients": {
 			"vodka": 50,
 			"cj": 150
-		}
+		},
+		"image": "images/vodka_cranberry.png"
 	}, {
 		"name": "Gin & Juice",
 		"ingredients": {
 			"gin": 50,
 			"oj": 150
-		}
+		},
+		"image": "images/gin_juice.png"
 	}, {
 		"name": "Tequila Sunrise",
 		"ingredients": {
 			"tequila": 50,
 			"grenadine": 15,
 			"oj": 135
-		}
+		},
+		"image": "images/tequila_sunrise.png"
 	}, {
 		"name": "Tranebær Margarita",
 		"ingredients": {
 			"tequila": 30,
 			"cointreau": 30,
 			"cj": 140
-		}
+		},
+		"image": "images/cranberry_margarita.png"
 	}, {
 		"name": "Sex on the beach",
 		"ingredients": {
@@ -72,7 +74,15 @@ drink_list = [
 			"cointreau": 20,
 			"vodka": 40,
 			"cj": 60
-		}
+		},
+		"image": "images/cosmopolitan.png"
+	}, {
+		"name": "Test",
+		"ingredients": {
+			"vodka": 10,
+			"oj": 30
+		},
+		"image": ""
 	}
 ]
 
