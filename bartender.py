@@ -152,7 +152,7 @@ class Bartender():
 		try:  
 			while True:
 				self.showDrinks()
-				drink = raw_input("\n\nSelect a drink.\n")
+				drink = input("\n\nSelect a drink.\n")
 				self.makeDrink(drink)
 
 		except KeyboardInterrupt:  
