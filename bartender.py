@@ -56,7 +56,8 @@ def pour(pin, waitTime):
 	# GPIO.output(pin, GPIO.HIGH)
 
 def checkRunning():
-	return global running
+	x = global running
+	return x
 
 def toggleRunning(waitTime = 0):
 	time.sleep(waitTime)
