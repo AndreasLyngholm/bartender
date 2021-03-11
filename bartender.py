@@ -51,7 +51,7 @@ def clean():
 
 def pour(pin, waitTime):
 	# GPIO.output(pin, GPIO.LOW)
-	# time.sleep(waitTime)
+	time.sleep(waitTime)
 	# GPIO.output(pin, GPIO.HIGH)
 
 @app.route('/')
