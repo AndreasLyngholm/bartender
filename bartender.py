@@ -12,43 +12,43 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
-running = False
+sdfsdfsdf = False
 
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
 
-def clean():
-	waitTime = 20
-	pumpThreads = []
+# def clean():
+# 	waitTime = 20
+# 	pumpThreads = []
 
-	# cancel any button presses while the drink is being made
-	# stopInterrupts()
-	running = True
+# 	# cancel any button presses while the drink is being made
+# 	# stopInterrupts()
+# 	running = True
 
-	for pump in pump_configuration.keys():
-		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
-		pumpThreads.append(pump_t)
+# 	for pump in pump_configuration.keys():
+# 		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
+# 		pumpThreads.append(pump_t)
 
-	# start the pump threads
-	for thread in pumpThreads:
-		thread.start()
+# 	# start the pump threads
+# 	for thread in pumpThreads:
+# 		thread.start()
 
-	# start the progress bar
-	progressBar(waitTime)
+# 	# start the progress bar
+# 	progressBar(waitTime)
 
-	# wait for threads to finish
-	for thread in pumpThreads:
-		thread.join()
+# 	# wait for threads to finish
+# 	for thread in pumpThreads:
+# 		thread.join()
 
-	# show the main menu
-	menuContext.showMenu()
+# 	# show the main menu
+# 	menuContext.showMenu()
 
-	# sleep for a couple seconds to make sure the interrupts don't get triggered
-	time.sleep(2);
+# 	# sleep for a couple seconds to make sure the interrupts don't get triggered
+# 	time.sleep(2);
 
-	# reenable interrupts
-	# startInterrupts()
-	running = False
+# 	# reenable interrupts
+# 	# startInterrupts()
+# 	running = False
 
 def pour(pin, waitTime):
 	# GPIO.output(pin, GPIO.LOW)
@@ -57,7 +57,7 @@ def pour(pin, waitTime):
 
 def toggleRunning(waitTime = 0):
 	time.sleep(waitTime)
-	running = not running
+	sdfsdfsdf = not sdfsdfsdf
 
 @app.route('/')
 def hello():
@@ -85,7 +85,7 @@ def make():
 	drink = request.args.get('drink')
 	strength = float(request.args.get('strength'))
 
-	if running:
+	if sdfsdfsdf:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
