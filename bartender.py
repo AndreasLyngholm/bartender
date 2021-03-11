@@ -120,7 +120,7 @@ def make():
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
 					pumpThreads.append(pump_t)
 
-		threading.Thread(target=toggleRunning, args=(maxTime))
+		threading.Thread(target=toggleRunning, args=(maxTime)).start()
 		# start the pump threads
 		for thread in pumpThreads:
 			thread.start()
