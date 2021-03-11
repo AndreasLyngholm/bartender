@@ -82,15 +82,15 @@ def drinks():
 
 @app.route('/make')
 def make():
+	drink = request.args.get('drink')
+	strength = float(request.args.get('strength'))
+
 	if running == True:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
 	else:
 		running = True
-
-	drink = request.args.get('drink')
-	strength = float(request.args.get('strength'))
 
 	ingredients = ""
 	for d in drink_list:
@@ -137,7 +137,6 @@ def make():
 
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
-	running = False
 	for pump in pump_configuration.keys():
 		GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 	app.run(host= '0.0.0.0', port=8080)
