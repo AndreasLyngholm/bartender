@@ -61,8 +61,8 @@ def checkRunning():
 	return running
 
 def toggleRunning(waitTime = 0):
-	global running
 	time.sleep(waitTime)
+	global running
 	running = not running
 
 @app.route('/')
@@ -120,7 +120,7 @@ def make():
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
 					pumpThreads.append(pump_t)
 
-		threading.Thread(target=toggleRunning, args=(maxTime)).start()
+		threading.Thread(target=toggleRunning, args=[maxTime]).start()
 		# start the pump threads
 		for thread in pumpThreads:
 			thread.start()
