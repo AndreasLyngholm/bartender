@@ -14,25 +14,25 @@
 	"pump_3": {
 		"name": "Pump 3",
 		"pin": 22, 
-		"value": null,
+		"value": "tequila",
 		"speed": 100.0
 	},
 	"pump_4": {
 		"name": "Pump 4",
 		"pin": 10, 
-		"value": null,
+		"value": "gin",
 		"speed": 100.0
 	},
 	"pump_5": {
 		"name": "Pump 5",
 		"pin": 9, 
-		"value": null,
+		"value": "rum",
 		"speed": 100.0
 	},
 	"pump_6": {
 		"name": "Pump 6",
 		"pin": 11, 
-		"value": null,
+		"value": "cj",
 		"speed": 100.0
 	}
 }
