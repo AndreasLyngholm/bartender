@@ -96,7 +96,7 @@ def make():
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
 
-	toggleRunning()
+	running = True
 
 	ingredients = ""
 	for d in drink_list:
