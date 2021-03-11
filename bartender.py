@@ -12,7 +12,7 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
-running = False
+running = None
 
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
@@ -85,7 +85,7 @@ def make():
 	drink = request.args.get('drink')
 	strength = float(request.args.get('strength'))
 
-	if running == True:
+	if running != True:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
