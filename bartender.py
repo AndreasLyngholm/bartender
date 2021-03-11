@@ -53,7 +53,7 @@ def readPumpConfiguration():
 
 def pour(pin, waitTime):
 	# GPIO.output(pin, GPIO.LOW)
-	time.sleep(waitTime)
+	time.sleep(int(waitTime))
 	# GPIO.output(pin, GPIO.HIGH)
 
 def checkRunning():
@@ -61,7 +61,7 @@ def checkRunning():
 	return running
 
 def toggleRunning(waitTime = 0):
-	time.sleep(waitTime)
+	time.sleep(int(waitTime))
 	global running
 	running = not running
 
