@@ -58,9 +58,9 @@ def pour(pin, waitTime):
 def checkRunning():
 	return running
 
-def waitRunning(waitTime):
+def toggleRunning(waitTime = 0):
 	time.sleep(waitTime)
-	running = False
+	running = not running
 
 @app.route('/')
 def hello():
@@ -85,12 +85,12 @@ def drinks():
 
 @app.route('/make')
 def make():
-	if checkRunning() != True:
+	if checkRunning():
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
 	else:
-		running = True
+		toggleRunning()
 
 	drink = request.args.get('drink')
 	strength = float(request.args.get('strength'))
@@ -117,7 +117,7 @@ def make():
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
 					pumpThreads.append(pump_t)
 
-		pumpThreads.append(threading.Thread(target=waitRunning, args=(maxTime)))
+		pumpThreads.append(threading.Thread(target=toggleRunning, args=(maxTime)))
 		# start the pump threads
 		for thread in pumpThreads:
 			thread.start()
