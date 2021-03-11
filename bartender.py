@@ -65,8 +65,8 @@ def drinks():
 		ingredients = drink["ingredients"]
 		presentIng = 0
 		for ing in ingredients.keys():
-			for p in self.pump_configuration.keys():
-				if (ing == self.pump_configuration[p]["value"]):
+			for p in pump_configuration.keys():
+				if (ing == pump_configuration[p]["value"]):
 					presentIng += 1
 		if (presentIng == len(ingredients.keys())): 
 			drinks.append(drink)
