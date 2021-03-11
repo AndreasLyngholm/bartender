@@ -12,7 +12,7 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
-running = None
+running = False
 
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
@@ -55,6 +55,9 @@ def pour(pin, waitTime):
 	time.sleep(waitTime)
 	# GPIO.output(pin, GPIO.HIGH)
 
+def checkRunning():
+	return running
+
 def waitRunning(waitTime):
 	time.sleep(waitTime)
 	running = False
@@ -82,15 +85,15 @@ def drinks():
 
 @app.route('/make')
 def make():
-	drink = request.args.get('drink')
-	strength = float(request.args.get('strength'))
-
-	if running != True:
+	if checkRunning() != True:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
 	else:
 		running = True
+
+	drink = request.args.get('drink')
+	strength = float(request.args.get('strength'))
 
 	ingredients = ""
 	for d in drink_list:
