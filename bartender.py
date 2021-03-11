@@ -50,9 +50,9 @@ def clean():
 	running = False
 
 def pour(pin, waitTime):
-	GPIO.output(pin, GPIO.LOW)
-	time.sleep(waitTime)
-	GPIO.output(pin, GPIO.HIGH)
+	# GPIO.output(pin, GPIO.LOW)
+	# time.sleep(waitTime)
+	# GPIO.output(pin, GPIO.HIGH)
 
 @app.route('/')
 def hello():
