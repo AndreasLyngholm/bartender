@@ -60,7 +60,18 @@ def hello():
 
 @app.route('/drinks')
 def drinks():
-	response = jsonify(drink_list)
+	drinks = []
+	for drink in drink_list:
+		ingredients = drink["ingredients"]
+		presentIng = 0
+		for ing in ingredients.keys():
+			for p in self.pump_configuration.keys():
+				if (ing == self.pump_configuration[p]["value"]):
+					presentIng += 1
+		if (presentIng == len(ingredients.keys())): 
+			drinks.append(drink)
+
+	response = jsonify(drinks)
 	response.headers.add('Access-Control-Allow-Origin', '*')
 	return response, 200
 
