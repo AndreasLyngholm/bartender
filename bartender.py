@@ -84,7 +84,7 @@ def drinks():
 
 	response = jsonify(drinks)
 	response.headers.add('Access-Control-Allow-Origin', '*')
-	return response, 200
+	return response
 
 @app.route('/make')
 def make():
@@ -94,7 +94,7 @@ def make():
 	if checkRunning():
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
-		return response, 400
+		return response
 
 	toggleRunning()
 
@@ -134,12 +134,12 @@ def make():
 		# 	thread.join()
 		response = jsonify({"drink": drink, "time": maxTime})
 		response.headers.add('Access-Control-Allow-Origin', '*')
-		return response, 200
+		return response
 
 	else:
 		response = jsonify({"error": "Denne drink kan ikke laves"})
 		response.headers.add('Access-Control-Allow-Origin', '*')
-		return response, 400
+		return response
 
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
