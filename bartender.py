@@ -12,6 +12,7 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
+running = False
 
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
@@ -54,6 +55,10 @@ def pour(pin, waitTime):
 	time.sleep(waitTime)
 	# GPIO.output(pin, GPIO.HIGH)
 
+def waitRunning(waitTime):
+	time.sleep(waitTime)
+	running = False
+
 @app.route('/')
 def hello():
 	return "Hello World!"
@@ -77,6 +82,13 @@ def drinks():
 
 @app.route('/make')
 def make():
+	if running == True:
+		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
+		response.headers.add('Access-Control-Allow-Origin', '*')
+		return response, 400
+	else:
+		running = True
+
 	drink = request.args.get('drink')
 	strength = float(request.args.get('strength'))
 
@@ -102,6 +114,7 @@ def make():
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
 					pumpThreads.append(pump_t)
 
+		pumpThreads.append(threading.Thread(target=waitRunning, maxTime))
 		# start the pump threads
 		for thread in pumpThreads:
 			thread.start()
