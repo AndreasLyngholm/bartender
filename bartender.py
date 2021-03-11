@@ -90,10 +90,6 @@ def make():
 						maxTime = waitTime
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
 					pumpThreads.append(pump_t)
-				else:
-					response = jsonify({"error": "Denne drink kan ikke laves"})
-					response.headers.add('Access-Control-Allow-Origin', '*')
-					return response, 400
 
 		# start the pump threads
 		for thread in pumpThreads:
