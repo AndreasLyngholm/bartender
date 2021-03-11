@@ -85,7 +85,7 @@ def drinks():
 
 @app.route('/make')
 def make():
-	if checkRunning():
+	if checkRunning() == True:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
