@@ -102,7 +102,9 @@ def make():
 		# wait for threads to finish
 		# for thread in pumpThreads:
 		# 	thread.join()
-		return jsonify({"success": "Din {} er færdig om {} sekunder...".format(drink, maxTime)})
+		response = jsonify({"success": "Din {} er færdig om {} sekunder...".format(drink, maxTime)})
+		response.headers.add('Access-Control-Allow-Origin', '*')
+		return response
 
 	else:
 		return jsonify({"error": "The drink does not exist"})
