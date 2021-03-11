@@ -53,7 +53,7 @@ def readPumpConfiguration():
 
 def pour(pin, waitTime):
 	# GPIO.output(pin, GPIO.LOW)
-	time.sleep(int(waitTime))
+	time.sleep(waitTime)
 	# GPIO.output(pin, GPIO.HIGH)
 
 def checkRunning():
@@ -61,8 +61,8 @@ def checkRunning():
 	return running
 
 def toggleRunning(waitTime = 0):
-	time.sleep(int(waitTime))
 	global running
+	time.sleep(waitTime)
 	running = not running
 
 @app.route('/')
@@ -95,8 +95,8 @@ def make():
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
-	else:
-		toggleRunning()
+
+	toggleRunning()
 
 	ingredients = ""
 	for d in drink_list:
