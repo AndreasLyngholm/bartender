@@ -55,10 +55,6 @@ def pour(pin, waitTime):
 	time.sleep(waitTime)
 	# GPIO.output(pin, GPIO.HIGH)
 
-def checkRunning():
-	x = global running
-	return x
-
 def toggleRunning(waitTime = 0):
 	time.sleep(waitTime)
 	running = not running
@@ -86,15 +82,15 @@ def drinks():
 
 @app.route('/make')
 def make():
-	if checkRunning():
+	drink = request.args.get('drink')
+	strength = float(request.args.get('strength'))
+
+	if running:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
 	else:
 		toggleRunning()
-
-	drink = request.args.get('drink')
-	strength = float(request.args.get('strength'))
 
 	ingredients = ""
 	for d in drink_list:
