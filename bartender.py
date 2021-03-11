@@ -6,13 +6,13 @@ import traceback
 import RPi.GPIO as GPIO
 from drinks import drink_list, drink_options
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, g
 app = Flask(__name__)
 
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
-running = False
+g.running = False
 
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
@@ -57,7 +57,7 @@ def pour(pin, waitTime):
 
 def toggleRunning(waitTime = 0):
 	time.sleep(waitTime)
-	running = not running
+	g.running = not g.running
 
 @app.route('/')
 def hello():
@@ -90,12 +90,12 @@ def make():
 		if drink == d['name']:
 			ingredients = d['ingredients']
 
-	if running:
+	if g.running:
 		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response, 400
 	else:
-		running = True
+		g.running = True
 	
 	if ingredients != '':
 		# Parse the drink ingredients and spawn threads for pumps
