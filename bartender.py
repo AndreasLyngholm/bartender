@@ -62,7 +62,7 @@ def hello():
 def drinks():
 	response = jsonify(drink_list)
 	response.headers.add('Access-Control-Allow-Origin', '*')
-	return response
+	return response, 200
 
 @app.route('/make')
 def make():
@@ -90,6 +90,10 @@ def make():
 						maxTime = waitTime
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
 					pumpThreads.append(pump_t)
+				else:
+					response = jsonify({"error": "Denne drink kan ikke laves"})
+					response.headers.add('Access-Control-Allow-Origin', '*')
+					return response, 400
 
 		# start the pump threads
 		for thread in pumpThreads:
@@ -104,10 +108,12 @@ def make():
 		# 	thread.join()
 		response = jsonify({"drink": drink, "time": maxTime})
 		response.headers.add('Access-Control-Allow-Origin', '*')
-		return response
+		return response, 200
 
 	else:
-		return jsonify({"error": "The drink does not exist"})
+		response = jsonify({"error": "Denne drink kan ikke laves"})
+		response.headers.add('Access-Control-Allow-Origin', '*')
+		return response, 400
 
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
