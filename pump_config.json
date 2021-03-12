@@ -8,8 +8,8 @@
 	"pump_2": {
 		"name": "Pump 2",
 		"pin": 27, 
-		"value": "oj",
-		"speed": 500.0
+		"value": "cointreau",
+		"speed": 100.0
 	},
 	"pump_3": {
 		"name": "Pump 3",
@@ -33,18 +33,18 @@
 		"name": "Pump 6",
 		"pin": 11, 
 		"value": "cj",
-		"speed": 500.0
+		"speed": 100.0
 	},
 	"pump_7": {
 		"name": "Pump 7",
-		"pin": 12, 
-		"value": "coke",
-		"speed": 100.0
+		"pin": 5, 
+		"value": "oj",
+		"speed": 500.0
 	},
 	"pump_8": {
 		"name": "Pump 8",
-		"pin": 12, 
-		"value": "cointreau",
-		"speed": 100.0
+		"pin": 6, 
+		"value": "coke",
+		"speed": 500.0
 	}
 }
