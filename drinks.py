@@ -1,13 +1,13 @@
 drink_list = [
 	{
-		"name": "Rum & Coke",
+		"name": "Rum og Coke",
 		"ingredients": {
 			"rum": 50,
 			"coke": 150
 		},
 		"image": "images/rom_coke.png"
 	}, {
-		"name": "Gin & Tonic",
+		"name": "Gin og Tonic",
 		"ingredients": {
 			"gin": 50,
 			"tonic": 150
@@ -39,7 +39,7 @@ drink_list = [
 		},
 		"image": "images/vodka_cranberry.png"
 	}, {
-		"name": "Gin & Juice",
+		"name": "Gin og Juice",
 		"ingredients": {
 			"gin": 50,
 			"oj": 150
