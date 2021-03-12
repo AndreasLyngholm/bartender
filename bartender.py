@@ -88,7 +88,7 @@ def drinks():
 
 @app.route('/make')
 def make():
-	drink = request.args.get('drink')
+	drink = request.args.get('drink').replace('_', ' ')
 	strength = float(request.args.get('strength'))
 
 	if checkRunning():
