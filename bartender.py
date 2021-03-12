@@ -12,7 +12,6 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
-global running
 running = False
 
 def readPumpConfiguration():
@@ -143,7 +142,7 @@ def make():
 
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
-	
+
 	for pump in pump_configuration.keys():
 		GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 	app.run(host= '0.0.0.0', port=8080)
