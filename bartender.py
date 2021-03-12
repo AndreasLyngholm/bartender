@@ -13,7 +13,6 @@ GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
 global running
-running = False
 
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
