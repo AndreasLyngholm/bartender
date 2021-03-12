@@ -144,10 +144,12 @@ def make():
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
 	running = False
-	try:
-		for pump in pump_configuration.keys():
-			GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
-	finally:
-		GPIO.cleanup()
 
-	app.run(host= '0.0.0.0', port=8080)
+	try:
+        for pump in pump_configuration.keys():
+			GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
+        app.run(host= '0.0.0.0', port=8080)
+    except:
+        print("Something went wrong")
+    finally:
+        GPIO.cleanup()
