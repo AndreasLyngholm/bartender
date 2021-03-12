@@ -52,9 +52,9 @@ def readPumpConfiguration():
 # 	running = False
 
 def pour(pin, waitTime):
-	# GPIO.output(pin, GPIO.LOW)
+	GPIO.output(pin, GPIO.LOW)
 	time.sleep(waitTime)
-	# GPIO.output(pin, GPIO.HIGH)
+	GPIO.output(pin, GPIO.HIGH)
 
 def checkRunning():
 	global running
@@ -144,6 +144,7 @@ def make():
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
 	running = False
+	GPIO.cleanup()
 	for pump in pump_configuration.keys():
 		GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 	app.run(host= '0.0.0.0', port=8080)
