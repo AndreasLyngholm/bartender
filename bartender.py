@@ -148,10 +148,6 @@ if __name__ == '__main__':
 		for pump in pump_configuration.keys():
 			GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 	finally:
-		print("clean up") 
 		GPIO.cleanup()
-		GPIO.setmode(GPIO.BCM)
-		for pump in pump_configuration.keys():
-			GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 
 	app.run(host= '0.0.0.0', port=8080)
