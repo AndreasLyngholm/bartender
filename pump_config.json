@@ -34,5 +34,11 @@
 		"pin": 11, 
 		"value": "cj",
 		"speed": 100.0
+	},
+	"pump_7": {
+		"name": "Pump 7",
+		"pin": 5, 
+		"value": "oj",
+		"speed": 500.0
 	}
 }
