@@ -152,4 +152,5 @@ if __name__ == '__main__':
     except:
         print("Something went wrong")
     finally:
+    	print("Resetting...")
         GPIO.cleanup()
