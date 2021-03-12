@@ -12,6 +12,7 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 
 pump_configuration = None
+global running
 running = False
 
 def readPumpConfiguration():
@@ -51,9 +52,9 @@ def readPumpConfiguration():
 # 	running = False
 
 def pour(pin, waitTime):
-	GPIO.output(pin, GPIO.LOW)
+	# GPIO.output(pin, GPIO.LOW)
 	time.sleep(waitTime)
-	GPIO.output(pin, GPIO.HIGH)
+	# GPIO.output(pin, GPIO.HIGH)
 
 def checkRunning():
 	global running
@@ -90,10 +91,10 @@ def make():
 	drink = request.args.get('drink')
 	strength = float(request.args.get('strength'))
 
-	# if checkRunning():
-	# 	response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
-	# 	response.headers.add('Access-Control-Allow-Origin', '*')
-	# 	return response
+	if checkRunning():
+		response = jsonify({"error": "Der bliver allerede lavet en drink! Vent venligst."})
+		response.headers.add('Access-Control-Allow-Origin', '*')
+		return response
 
 	toggleRunning()
 
@@ -142,7 +143,7 @@ def make():
 
 if __name__ == '__main__':
 	pump_configuration = readPumpConfiguration()
-
+	running = False
 	for pump in pump_configuration.keys():
 		GPIO.setup(pump_configuration[pump]["pin"], GPIO.OUT, initial=GPIO.HIGH)
 	app.run(host= '0.0.0.0', port=8080)
