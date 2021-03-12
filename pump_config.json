@@ -34,17 +34,5 @@
 		"pin": 11, 
 		"value": "cj",
 		"speed": 100.0
-	},
-	"pump_7": {
-		"name": "Pump 7",
-		"pin": 5, 
-		"value": "oj",
-		"speed": 500.0
-	},
-	"pump_8": {
-		"name": "Pump 8",
-		"pin": 6, 
-		"value": "coke",
-		"speed": 500.0
 	}
 }
