@@ -115,7 +115,7 @@ def make():
 						if option["value"] == ing:
 							choice = option
 
-					waitTime = ingredients[ing] * (strength if choice["type"] == "alcohol" else 1) * (60.0/pump_configuration[pump]["speed"])
+					waitTime = ingredients[ing] * (strength if choice["type"] == "alcohol" else 1) * (3 if choice["type"] == "soda" else 1) * (60.0/pump_configuration[pump]["speed"])
 					if (waitTime > maxTime):
 						maxTime = waitTime
 					pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))

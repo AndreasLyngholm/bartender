@@ -114,9 +114,9 @@ drink_options = [
 	{"name": "Tequila", "value": "tequila", "type": "alcohol"},
 	{"name": "Cointreau", "value": "cointreau", "type": "alcohol"},
 	{"name": "Tonic Water", "value": "tonic", "type": "mixer"},
-	{"name": "Coke", "value": "coke", "type": "mixer"},
+	{"name": "Coke", "value": "coke", "type": "soda"},
 	{"name": "Grenadine", "value": "grenadine", "type": "mixer"},
 	{"name": "Cranberry Juice", "value": "cj", "type": "mixer"},
 	{"name": "Orange Juice", "value": "oj", "type": "mixer"},
-	{"name": "Lemon", "value": "lemon", "type": "mixer"},
+	{"name": "Lemon", "value": "lemon", "type": "soda"},
 ]
