@@ -32,7 +32,7 @@
 	"pump_6": {
 		"name": "Pump 6",
 		"pin": 11, 
-		"value": "cj",
+		"value": "coke",
 		"speed": 90.0
 	},
 	"pump_7": {
@@ -44,7 +44,7 @@
 	"pump_8": {
 		"name": "Pump 8",
 		"pin": 6, 
-		"value": "coke",
+		"value": "cj",
 		"speed": 350.0
 	}
 }
