@@ -69,62 +69,6 @@ drink_list = [
 			"oj": 75
 		},
 		"image": "images/sex_on_the_beach.png"
-	}, {
-		"name": "Cosmopolitan",
-		"ingredients": {
-			"cointreau": 20,
-			"vodka": 40,
-			"cj": 60
-		},
-		"image": "images/cosmopolitan.png"
-	}, {
-		"name": "Pump 1",
-		"ingredients": {
-			"vodka": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 2",
-		"ingredients": {
-			"cointreau": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 3",
-		"ingredients": {
-			"tequila": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 4",
-		"ingredients": {
-			"gin": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 5",
-		"ingredients": {
-			"rum": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 6",
-		"ingredients": {
-			"coke": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 7",
-		"ingredients": {
-			"oj": 50
-		},
-		"image": ""
-	}, {
-		"name": "Pump 8",
-		"ingredients": {
-			"cj": 50
-		},
-		"image": ""
 	}
 ]
 
