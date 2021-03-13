@@ -102,6 +102,7 @@ def make():
 	for d in drink_list:
 		if drink == d['name']:
 			ingredients = d['ingredients']
+			add = (d['add'] if d.has_key('add') else None)
 	
 	if ingredients != '':
 		# Parse the drink ingredients and spawn threads for pumps
@@ -132,7 +133,7 @@ def make():
 		# wait for threads to finish
 		# for thread in pumpThreads:
 		# 	thread.join()
-		response = jsonify({"drink": drink, "time": maxTime})
+		response = jsonify({"drink": drink, "time": maxTime, "add": add})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response
 

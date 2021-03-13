@@ -48,10 +48,10 @@ drink_list = [
 	}, {
 		"name": "Tequila Sunrise",
 		"ingredients": {
-			"tequila": 50,
-			"grenadine": 15,
-			"oj": 135
+			"tequila": 40,
+			"oj": 120
 		},
+		'add': "Grenadine, 1 cl",
 		"image": "images/tequila_sunrise.png"
 	}, {
 		"name": "Tranebær Margarita",
@@ -69,6 +69,32 @@ drink_list = [
 			"oj": 75
 		},
 		"image": "images/sex_on_the_beach.png"
+	}, {
+		"name": "Blue Lagoon",
+		'ingredients': {
+			'vodka': 40,
+			'lemon': 70
+		},
+		'add': "Blue Curacao, 3 cl",
+		'image': "images/blue_lagoon.png"
+	}, {
+		"name": "Electric Iced Tea Cocktail",
+		'ingredients': {
+			'vodka': 15,
+			'rum': 15,
+			'tequila': 15,
+			'gin': 15,
+			'lemon': 60
+		},
+		'add': "Blue Curacao, 2 cl",
+		'image': "images/electric_iced_tea.png"
+	}, {
+		"name": "Test",
+		"ingredients": {
+			'coke': 50
+		},
+		'add': "Blue Curacao, 2 cl",
+		'image': ""
 	}
 ]
 
