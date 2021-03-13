@@ -5,6 +5,7 @@ drink_list = [
 			"rum": 50,
 			"coke": 150
 		},
+		'add': None,
 		"image": "images/rom_coke.png"
 	}, {
 		"name": "Gin og Tonic",
@@ -12,6 +13,7 @@ drink_list = [
 			"gin": 50,
 			"tonic": 150
 		},
+		'add': None,
 		"image": "images/gin_tonic.png"
 	}, {
 		"name": "Long Island",
@@ -23,6 +25,7 @@ drink_list = [
 			"coke": 100,
 			"oj": 30
 		},
+		'add': None,
 		"image": "images/long_island.png"
 	}, {
 		"name": "Screwdriver",
@@ -30,6 +33,7 @@ drink_list = [
 			"vodka": 50,
 			"oj": 150
 		},
+		'add': None,
 		"image": "images/screwdriver.png"
 	}, {
 		"name": "Vodka Tranebær",
@@ -37,6 +41,7 @@ drink_list = [
 			"vodka": 50,
 			"cj": 150
 		},
+		'add': None,
 		"image": "images/vodka_cranberry.png"
 	}, {
 		"name": "Gin og Juice",
@@ -44,6 +49,7 @@ drink_list = [
 			"gin": 50,
 			"oj": 150
 		},
+		'add': None,
 		"image": "images/gin_juice.png"
 	}, {
 		"name": "Tequila Sunrise",
@@ -60,6 +66,7 @@ drink_list = [
 			"cointreau": 30,
 			"cj": 140
 		},
+		'add': None,
 		"image": "images/cranberry_margarita.png"
 	}, {
 		"name": "Sex on the beach",
@@ -68,6 +75,7 @@ drink_list = [
 			"cj": 75,
 			"oj": 75
 		},
+		'add': None,
 		"image": "images/sex_on_the_beach.png"
 	}, {
 		"name": "Blue Lagoon",
