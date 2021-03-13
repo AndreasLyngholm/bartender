@@ -116,5 +116,6 @@ drink_options = [
 	{"name": "Coke", "value": "coke", "type": "mixer"},
 	{"name": "Grenadine", "value": "grenadine", "type": "mixer"},
 	{"name": "Cranberry Juice", "value": "cj", "type": "mixer"},
-	{"name": "Orange Juice", "value": "oj", "type": "mixer"}
+	{"name": "Orange Juice", "value": "oj", "type": "mixer"},
+	{"name": "Lemon", "value": "lemon", "type": "mixer"},
 ]
