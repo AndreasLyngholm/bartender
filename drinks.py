@@ -80,7 +80,8 @@ drink_list = [
 	}, {
 		"name": "Test",
 		"ingredients": {
-			"vodka": 100
+			"vodka": 50,
+			"oj": 150
 		},
 		"image": ""
 	}
