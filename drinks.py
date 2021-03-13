@@ -97,14 +97,14 @@ drink_list = [
 		'add': "Blue Curacao, 2 cl",
 		'image': "images/electric_iced_tea.png"
 	}
-	# , {
-	# 	"name": "Test",
-	# 	"ingredients": {
-	# 		'lemon': 50
-	# 	},
-	# 	'add': "Tilføj selv Blue Curacao, 2 cl",
-	# 	'image': ""
-	# }
+	, {
+		"name": "Test",
+		"ingredients": {
+			'lemon': 50
+		},
+		'add': "Tilføj selv Blue Curacao, 2 cl",
+		'image': ""
+	}
 ]
 
 drink_options = [
