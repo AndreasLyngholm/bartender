@@ -57,7 +57,7 @@ drink_list = [
 			"tequila": 40,
 			"oj": 120
 		},
-		'add': "Grenadine, 1 cl",
+		'add': "Tilføj selv Grenadine, 1 cl",
 		"image": "images/tequila_sunrise.png"
 	}, {
 		"name": "Tranebær Margarita",
@@ -83,7 +83,7 @@ drink_list = [
 			'vodka': 40,
 			'lemon': 70
 		},
-		'add': "Blue Curacao, 3 cl",
+		'add': "Tilføj selv Blue Curacao, 3 cl",
 		'image': "images/blue_lagoon.png"
 	}, {
 		"name": "Electric Iced Tea Cocktail",
@@ -96,14 +96,15 @@ drink_list = [
 		},
 		'add': "Blue Curacao, 2 cl",
 		'image': "images/electric_iced_tea.png"
-	}, {
-		"name": "Test",
-		"ingredients": {
-			'lemon': 50
-		},
-		'add': "Blue Curacao, 2 cl",
-		'image': ""
 	}
+	# , {
+	# 	"name": "Test",
+	# 	"ingredients": {
+	# 		'lemon': 50
+	# 	},
+	# 	'add': "Tilføj selv Blue Curacao, 2 cl",
+	# 	'image': ""
+	# }
 ]
 
 drink_options = [
