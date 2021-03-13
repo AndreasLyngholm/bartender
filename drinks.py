@@ -81,7 +81,7 @@ drink_list = [
 		"name": "Blue Lagoon",
 		'ingredients': {
 			'vodka': 40,
-			'lemon': 70
+			'lemon': 100
 		},
 		'add': "Tilføj selv Blue Curacao, 3 cl",
 		'image': "images/blue_lagoon.png"
