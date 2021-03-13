@@ -102,7 +102,10 @@ def make():
 	for d in drink_list:
 		if drink == d['name']:
 			ingredients = d['ingredients']
-			add = (d['add'] if d.has_key('add') else None)
+			if "add" in d:
+				add = d['add']
+			else:
+				add = None
 	
 	if ingredients != '':
 		# Parse the drink ingredients and spawn threads for pumps
