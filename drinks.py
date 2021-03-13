@@ -91,7 +91,7 @@ drink_list = [
 	}, {
 		"name": "Test",
 		"ingredients": {
-			'coke': 50
+			'lemon': 50
 		},
 		'add': "Blue Curacao, 2 cl",
 		'image': ""
