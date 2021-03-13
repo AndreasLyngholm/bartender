@@ -78,10 +78,15 @@ drink_list = [
 		},
 		"image": "images/cosmopolitan.png"
 	}, {
-		"name": "Test",
+		"name": "Test OJ",
 		"ingredients": {
-			"vodka": 50,
-			"oj": 150
+			"oj": 200
+		},
+		"image": ""
+	}, {
+		"name": "Test VODKA",
+		"ingredients": {
+			"oj": 100
 		},
 		"image": ""
 	}
