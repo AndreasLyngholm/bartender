@@ -32,7 +32,7 @@
 	"pump_6": {
 		"name": "Pump 6",
 		"pin": 11, 
-		"value": "lemon",
+		"value": "",
 		"speed": 90.0
 	},
 	"pump_7": {

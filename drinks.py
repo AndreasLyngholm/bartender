@@ -2,18 +2,16 @@ drink_list = [
 	{
 		"name": "Rum og Coke",
 		"ingredients": {
-			"rum": 50,
-			"coke": 150
+			"rum": 50
 		},
-		'add': "",
+		'add': "Tilføj cola",
 		"image": "images/rom_coke.png"
 	}, {
 		"name": "Gin og Tonic",
 		"ingredients": {
-			"gin": 50,
-			"tonic": 150
+			"gin": 50
 		},
-		'add': "",
+		'add': "Tilføj Tonic",
 		"image": "images/gin_tonic.png"
 	}, {
 		"name": "Long Island",
@@ -22,10 +20,9 @@ drink_list = [
 			"rum": 15,
 			"vodka": 15,
 			"tequila": 15,
-			"coke": 100,
 			"oj": 30
 		},
-		'add': "",
+		'add': "Tilføj cola",
 		"image": "images/long_island.png"
 	}, {
 		"name": "Screwdriver",
@@ -80,10 +77,9 @@ drink_list = [
 	}, {
 		"name": "Blue Lagoon",
 		'ingredients': {
-			'vodka': 40,
-			'lemon': 100
+			'vodka': 50
 		},
-		'add': "Tilføj selv Blue Curacao, 3 cl",
+		'add': "Tilføj selv Blue Curacao, 1 cl samt Lemon sodavand",
 		'image': "images/blue_lagoon.png"
 	}, {
 		"name": "Electric Iced Tea Cocktail",
@@ -91,19 +87,10 @@ drink_list = [
 			'vodka': 15,
 			'rum': 15,
 			'tequila': 15,
-			'gin': 15,
-			'lemon': 60
+			'gin': 15
 		},
-		'add': "Blue Curacao, 2 cl",
+		'add': "Blue Curacao, 1 cl samt Lemon sodavand",
 		'image': "images/electric_iced_tea.png"
-	}
-	, {
-		"name": "Test",
-		"ingredients": {
-			'lemon': 50
-		},
-		'add': "Tilføj selv Blue Curacao, 2 cl",
-		'image': ""
 	}
 ]
 
