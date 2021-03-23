@@ -36,7 +36,7 @@ def toggleRunning(waitTime = 0):
 def hello():
 	return "Hello World!"
 
-@app.route('clean')
+@app.route('/clean')
 def clean():
 	pumps = request.args.get('pumps')
 	cleanTime = 20
