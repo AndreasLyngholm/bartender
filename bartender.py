@@ -43,7 +43,7 @@ def clean():
 	pumpThreads = []
 
 	for pump in pumps:
-		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], cleanTime))
+		pump_t = threading.Thread(target=pour, args=(pump_configuration["pump_" + pump]["pin"], cleanTime))
 		pumpThreads.append(pump_t)
 
 	for thread in pumpThreads:
