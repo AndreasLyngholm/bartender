@@ -47,6 +47,9 @@ def clean():
 		pumpThreads.append(pump_t)
 
 	for thread in pumpThreads:
+		thread.start()
+
+	for thread in pumpThreads:
 		thread.join()
 
 	print("Cleaning was successful!")
