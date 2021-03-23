@@ -18,38 +18,19 @@ running = False
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
 
-# def clean():
-# 	waitTime = 20
-# 	pumpThreads = []
+def clean(clean):
+	cleanTime = 20
+	pumpThreads = []
 
-# 	# cancel any button presses while the drink is being made
-# 	# stopInterrupts()
-# 	running = True
+	for pump in clean:
+		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], cleanTime))
+		pumpThreads.append(pump_t)
 
-# 	for pump in pump_configuration.keys():
-# 		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], waitTime))
-# 		pumpThreads.append(pump_t)
+	for thread in pumpThreads:
+		thread.join()
 
-# 	# start the pump threads
-# 	for thread in pumpThreads:
-# 		thread.start()
+	print("Cleaning was successful!")
 
-# 	# start the progress bar
-# 	progressBar(waitTime)
-
-# 	# wait for threads to finish
-# 	for thread in pumpThreads:
-# 		thread.join()
-
-# 	# show the main menu
-# 	menuContext.showMenu()
-
-# 	# sleep for a couple seconds to make sure the interrupts don't get triggered
-# 	time.sleep(2);
-
-# 	# reenable interrupts
-# 	# startInterrupts()
-# 	running = False
 
 def pour(pin, waitTime):
 	GPIO.output(pin, GPIO.LOW)
