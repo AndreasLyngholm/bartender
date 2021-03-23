@@ -18,20 +18,6 @@ running = False
 def readPumpConfiguration():
 	return json.load(open('pump_config.json'))
 
-def clean(clean):
-	cleanTime = 20
-	pumpThreads = []
-
-	for pump in clean:
-		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], cleanTime))
-		pumpThreads.append(pump_t)
-
-	for thread in pumpThreads:
-		thread.join()
-
-	print("Cleaning was successful!")
-
-
 def pour(pin, waitTime):
 	GPIO.output(pin, GPIO.LOW)
 	time.sleep(waitTime)
@@ -49,6 +35,21 @@ def toggleRunning(waitTime = 0):
 @app.route('/')
 def hello():
 	return "Hello World!"
+
+@app.route('clean')
+def clean():
+	pumps = request.args.get('pumps')
+	cleanTime = 20
+	pumpThreads = []
+
+	for pump in pumps:
+		pump_t = threading.Thread(target=pour, args=(pump_configuration[pump]["pin"], cleanTime))
+		pumpThreads.append(pump_t)
+
+	for thread in pumpThreads:
+		thread.join()
+
+	print("Cleaning was successful!")
 
 @app.route('/drinks')
 def drinks():
