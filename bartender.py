@@ -38,7 +38,7 @@ def hello():
 
 @app.route('/clean')
 def clean():
-	pumps = request.args.get('pumps')
+	pumps = request.args.get('pumps').split(',')
 	cleanTime = 20
 	pumpThreads = []
 
